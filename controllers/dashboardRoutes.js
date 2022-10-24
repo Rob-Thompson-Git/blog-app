@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const {Post} = require('../models/');
+const {Post, User, Comment} = require('../models/');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 //need to make sure logged in
 router.get('/', withAuth, async (req, res) => {
