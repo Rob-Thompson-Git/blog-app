@@ -12,14 +12,15 @@ router.get('/', withAuth, async (req, res) => {
             }
         });
         const posts = postData.map((post) => post.get({plain: true}));
-        res.render('all-posts-admin', {
+        res.render('all-posts', {
             layout: 'dashboard', 
             //adds posts
             posts
         });
     } catch(err) {
         //whenever res.redirect, we refer to view file
-        res.redirect('login');
+        // res.redirect('login');
+        res.status(400).json(err);
     }
 });
 
