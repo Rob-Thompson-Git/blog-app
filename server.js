@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: process.env.SECRET_ID,
-  cookie: {},
+  cookie: {
+    maxAge: 900000,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -30,7 +32,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);

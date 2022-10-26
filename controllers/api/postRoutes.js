@@ -1,4 +1,4 @@
-const router = require(".");
+const router = require("express").Router();
 const { Post } = require("../../models");
 
 router.get('/', async (req, res) => {
@@ -40,3 +40,5 @@ router.post('/', async (req, res) => {
         re.status(500).json(err);
     }
 });
+
+module.exports = router;
